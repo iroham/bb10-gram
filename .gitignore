@@ -1,0 +1,16 @@
+# Build output
+build/
+*.bar
+*.o
+obj/
+*.log
+__pycache__/
+
+# App data copied from a device
+data/
+
+# Third-party sources (see README)
+third_party/
+
+# macOS
+.DS_Store

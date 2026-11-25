@@ -1,0 +1,17 @@
+# CMake toolchain: BB10 (QNX 8, armle-v7) with the project's clang 11 + own libc++ (phase6/toolchain).
+# Only static libraries are built through CMake; the final link is done by hand with ld.lld (see td-build.sh).
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_CROSSCOMPILING TRUE)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+set(CMAKE_C_COMPILER $ENV{CLANG}/clang)
+set(CMAKE_CXX_COMPILER $ENV{CLANG}/clang++)
+set(CMAKE_AR $ENV{CLANG}/llvm-ar CACHE FILEPATH "")
+set(CMAKE_RANLIB $ENV{CLANG}/llvm-ranlib CACHE FILEPATH "")
+set(CMAKE_C_FLAGS_INIT "$ENV{TG_CFLAGS}")
+set(CMAKE_CXX_FLAGS_INIT "$ENV{TG_CXXFLAGS}")
+set(CMAKE_FIND_ROOT_PATH /b/qnx/openssl $ENV{QT}/armle-v7 $ENV{QT})
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(UNIX TRUE)
